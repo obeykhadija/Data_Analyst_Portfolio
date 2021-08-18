@@ -1,4 +1,4 @@
-#Link to Jupyter Notebook hosted on IBM:
+#Link to Jupyter Notebook hosted on IBM: https://rb.gy/zt3vo3
 #Import necessary libraries
 import ibm_db
 import ibm_db_sa
@@ -56,12 +56,12 @@ df_hic = highest_infection_count.DataFrame()
 df_hir = highest_infection_rolling.DataFrame()
 df_ppv = percent_pop_vaccinated.DataFrame()
 
-#Data Cleaning
-df_hic.fillna(0, inplace=True)
-df_hir.fillna(0, inplace=True)
-df_hic.fillna(0, inplace=True)
-df_ppv.fillna(0, inplace=True)
+df_queries = [df_hic, df_hir, df_ppv]
 
+#Data Cleaning
+for df in df_queries:
+  df.fillna(0, inplace=True)
+  print(df.isna().sum())
 
 #Figure 1
 gdp_fig = go.Figure(data=[go.Table(
